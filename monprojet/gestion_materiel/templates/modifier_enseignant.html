@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Modifier Enseignant</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-edit" type="submit">Enregistrer les modifications</button>
+  </form>
+{% endblock %}

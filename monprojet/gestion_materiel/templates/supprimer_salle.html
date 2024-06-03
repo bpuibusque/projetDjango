@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Supprimer Salle</h2>
+  <p>Êtes-vous sûr de vouloir supprimer cette salle ?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button class="btn btn-delete" type="submit">Oui, supprimer</button>
+    <a class="btn btn-edit" href="{% url 'visualisation' %}">Annuler</a>
+  </form>
+{% endblock %}
