@@ -103,7 +103,6 @@
       <tr>
         <th>Numéro</th>
         <th>Étage</th>
-        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -111,10 +110,6 @@
         <tr>
           <td>{{ salle.numero }}</td>
           <td>{{ salle.etage }}</td>
-          <td>
-            <a class="btn btn-edit" href="{% url 'modifier_salle' salle.id %}">Modifier</a>
-            <a class="btn btn-delete" href="{% url 'supprimer_salle' salle.id %}">Supprimer</a>
-          </td>
         </tr>
       {% endfor %}
     </tbody>
