@@ -1,11 +1,10 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-  <h2>Supprimer Matériel</h2>
-  <p>Êtes-vous sûr de vouloir supprimer ce matériel ?</p>
+  <h2>Modifier materiel</h2>
   <form method="post">
     {% csrf_token %}
-    <button class="btn btn-delete" type="submit">Oui, supprimer</button>
-    <a class="btn btn-edit" href="{% url 'visualisation' %}">Annuler</a>
+    {{ form.as_p }}
+    <button class="btn btn-edit" type="submit">Enregistrer les modifications</button>
   </form>
 {% endblock %}

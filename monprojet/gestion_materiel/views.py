@@ -27,8 +27,7 @@ def changement_possesseur(request, pk):
     if request.method == 'POST':
         form = ChangementPossesseurForm(request.POST)
         if form.is_valid():
-            materiel.possesseur = form.cleaned_data['nouveau_possesseur']
-            materiel.save()
+            form.save()
             return redirect('visualisation')
     else:
         form = ChangementPossesseurForm(initial={'materiel': materiel})
@@ -54,7 +53,11 @@ def ajouter_emprunt(request):
     if request.method == 'POST':
         form = EmpruntForm(request.POST)
         if form.is_valid():
-            form.save()
+            emprunt = form.save()
+            # Mise à jour du possesseur du matériel
+            materiel = emprunt.materiel
+            materiel.possesseur = emprunt.emprunteur
+            materiel.save()
             return redirect('visualisation')
     else:
         form = EmpruntForm()
@@ -74,6 +77,10 @@ def modifier_emprunt(request, pk):
 def supprimer_emprunt(request, pk):
     emprunt = get_object_or_404(Emprunt, pk=pk)
     if request.method == 'POST':
+        materiel = emprunt.materiel
+        materiel.possesseur = None
+        materiel.save()
+        
         emprunt.delete()
         return redirect('visualisation')
     return render(request, 'supprimer_emprunt.html', {'emprunt': emprunt})

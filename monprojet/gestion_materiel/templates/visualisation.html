@@ -3,6 +3,77 @@
 {% block content %}
   <h2>Visualisation des Données</h2>
 
+  <h3>Emprunts</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Emprunteur</th>
+        <th>Matériel</th>
+        <th>Date d'emprunt</th>
+        <th>Date de retour prévue</th>
+        <th>Date de retour réelle</th>
+        <th>Lieu de passation</th>
+        <th>Occasion de passation</th>
+        <th>Objectif d'utilisation</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for emprunt in emprunts %}
+        <tr>
+          <td>{{ emprunt.emprunteur }}</td>
+          <td>{{ emprunt.materiel }}</td>
+          <td>{{ emprunt.date_emprunt }}</td>
+          <td>{{ emprunt.date_retour_prevue }}</td>
+          <td>{{ emprunt.date_retour_reelle }}</td>
+          <td>{{ emprunt.lieu_passation }}</td>
+          <td>{{ emprunt.occasion_passation }}</td>
+          <td>{{ emprunt.objectif_utilisation }}</td>
+          <td>
+            <a class="btn btn-edit" href="{% url 'modifier_emprunt' emprunt.id %}">Modifier</a>
+            <a class="btn btn-delete" href="{% url 'supprimer_emprunt' emprunt.id %}">Supprimer</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  
+  <h3>Matériels</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Salle</th>
+        <th>Possesseur</th>
+        <th>Propriétaire</th>
+        <th>Budget</th>
+        <th>Accessoires</th>
+        <th>État des accessoires</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for materiel in materiels %}
+        <tr>
+          <td>{{ materiel.type }}</td>
+          <td>{{ materiel.description }}</td>
+          <td>{{ materiel.salle }}</td>
+          <td>{{ materiel.possesseur }}</td>
+          <td>{{ materiel.proprietaire }}</td>
+          <td>{{ materiel.budget }}</td>
+          <td>{{ materiel.accessoires }}</td>
+          <td>{{ materiel.etat_accessoires }}</td>
+          <td>
+            <a class="btn btn-edit" href="{% url 'modifier_materiel' materiel.id %}">Modifier</a>
+            <a class="btn btn-delete" href="{% url 'supprimer_materiel' materiel.id %}">Supprimer</a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
   <h3>Enseignants</h3>
   <table>
     <thead>
@@ -43,58 +114,6 @@
           <td>
             <a class="btn btn-edit" href="{% url 'modifier_salle' salle.id %}">Modifier</a>
             <a class="btn btn-delete" href="{% url 'supprimer_salle' salle.id %}">Supprimer</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <h3>Matériels</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for materiel in materiels %}
-        <tr>
-          <td>{{ materiel.type }}</td>
-          <td>{{ materiel.description }}</td>
-          <td>
-            <a class="btn btn-edit" href="{% url 'modifier_materiel' materiel.id %}">Modifier</a>
-            <a class="btn btn-delete" href="{% url 'supprimer_materiel' materiel.id %}">Supprimer</a>
-          </td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-
-  <h3>Emprunts</h3>
-  <table>
-    <thead>
-      <tr>
-        <th>Emprunteur</th>
-        <th>Matériel</th>
-        <th>Date d'emprunt</th>
-        <th>Date de retour prévue</th>
-        <th>Date de retour réelle</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for emprunt in emprunts %}
-        <tr>
-          <td>{{ emprunt.emprunteur }}</td>
-          <td>{{ emprunt.materiel }}</td>
-          <td>{{ emprunt.date_emprunt }}</td>
-          <td>{{ emprunt.date_retour_prevue }}</td>
-          <td>{{ emprunt.date_retour_reelle }}</td>
-          <td>
-            <a class="btn btn-edit" href="{% url 'modifier_emprunt' emprunt.id %}">Modifier</a>
-            <a class="btn btn-delete" href="{% url 'supprimer_emprunt' emprunt.id %}">Supprimer</a>
           </td>
         </tr>
       {% endfor %}
